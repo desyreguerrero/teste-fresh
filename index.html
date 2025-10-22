@@ -982,15 +982,10 @@
         <span class="material-symbols-outlined">chat</span>
     </div>
 
-    <!--Start of Tawk.to Script - SUBSTITUÍDO -->
-    <!-- O script do chat DEVE vir ANTES do script que o utiliza -->
-    <script
-    src='//fw-cdn.com/11289534/3984846.js'
-    chat='true'>
-    </script>
-    <!--End of Tawk.to Script-->
-
-    <!-- NOVO SCRIPT DE CONFIGURAÇÃO DO FRESHWORKS -->
+    <!-- 
+    PASSO 1: O SCRIPT DE CONFIGURAÇÃO DEVE VIR ANTES 
+    Definimos a função de callback ANTES de chamar o script principal.
+    -->
     <script>
     // Esta função é chamada automaticamente pelo script 'fw-cdn.com' após o carregamento
     function fw_chat_widget() {
@@ -1007,7 +1002,6 @@
         console.log("Widget inicializado e botão padrão escondido.");
 
         // 2. Define os dados do usuário (conforme seu snippet)
-        // Usamos um try/catch para segurança
         try {
             // To set unique user id in your system when it is available
             window.fcWidget.setExternalId("john.doe1987");
@@ -1019,16 +1013,45 @@
             window.fcWidget.user.setEmail("john.doe@gmail.com");
 
             // To set user properties
+            // CORREÇÃO: Removidos caracteres inválidos que estavam quebrando o objeto JS
             window.fcWidget.user.setProperties({
-              cf_plan: "Pro",                 // meta property 1
-              cf_status: "Active"             // meta property 2
+              cf_plan: "Pro",      // meta property 1
+              cf_status: "Active"  // meta property 2
             });
             console.log("Dados do usuário (John Doe) configurados no chat.");
         } catch (e) {
             console.warn("Erro ao definir dados do usuário no chat:", e);
         }
+
+        // 3. ANEXA O LISTENER DE CLIQUE AQUI
+        // Isso garante que o botão só funcionará DEPOIS que o chat estiver pronto.
+        const customChatButton = document.getElementById('custom-chat-button');
+        if (customChatButton) {
+            customChatButton.addEventListener('click', () => {
+                // Não precisamos mais checar se 'fcWidget' existe,
+                // porque só chegamos aqui se ele já foi inicializado.
+                try {
+                    window.fcWidget.open();
+                } catch (e) {
+                    console.error("Erro ao tentar abrir o chat:", e);
+                }
+            });
+            console.log("Listener de clique anexado ao botão de chat customizado.");
+        } else {
+            console.warn("Botão de chat customizado (custom-chat-button) não foi encontrado.");
+        }
     }
     </script>
+
+    <!-- 
+    PASSO 2: O SCRIPT DO CHAT É CARREGADO DEPOIS 
+    Agora que a função 'fw_chat_widget' existe, este script irá executá-la.
+    -->
+    <script
+    src='//fw-cdn.com/11289534/3984846.js'
+    chat='true'>
+    </script>
+    <!--End of Tawk.to Script-->
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -1063,19 +1086,15 @@
             }
 
             // --- Lógica do Botão de Chat Customizado ---
-            const customChatButton = document.getElementById('custom-chat-button');
+            // A LÓGICA FOI MOVIDA PARA DENTRO DE 'fw_chat_widget()'
+            // Isso previne a "race condition" (condição de corrida)
+            /* const customChatButton = document.getElementById('custom-chat-button');
             if (customChatButton) {
                 customChatButton.addEventListener('click', () => {
-                    // Tenta chamar a API do Freshworks (fw-cdn)
-                    // A API correta, baseada no seu snippet, é 'window.fcWidget'
-                    if (typeof window.fcWidget === 'object' && typeof window.fcWidget.open === 'function') {
-                        window.fcWidget.open();
-                    } else {
-                        // Log de aviso caso a API não seja encontrada
-                        console.warn('API do chat (window.fcWidget) não encontrada. O script foi carregado?');
-                    }
+                    // ... (código antigo removido) ...
                 });
             }
+            */
         });
     </script>
 
@@ -1083,5 +1102,3 @@
     <!--End of Tawk.to Script-->
 </body>
 </html>
-
-
