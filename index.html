@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case MPRS: A Revolução da IA no Ministério Público | Xertica.ai</title>
+    
+    <!-- Google Fonts --><link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Material Symbols --><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <style>
+        :root {
+            --brand-primary: #00C0FF;
+            --brand-accent: #FF00F3;
+            --text-strong: #1E1E1E;
+            --text-muted: #393232;
+            --text-light: #F0F0F0;
+            --bg-page: #ffffff;
+            --bg-soft: #F6F8FA;
+            --bg-hero: #F9F8FF;
+            --bg-dark: #121212;
+            --stroke: #E6E8EB;
+            --font-heading: 'Space Mono', monospace;
+            --font-body: 'Roboto', sans-serif;
+            --space-xs: clamp(0.5rem, 1vw, 0.75rem);
+            --space-sm: clamp(1rem, 2vw, 1.25rem);
+            --space-md: clamp(1.5rem, 3vw, 2rem);
+            --space-lg: clamp(2.5rem, 5vw, 4rem);
+            --space-xl: clamp(4rem, 8vw, 6rem);
+            --border-radius-sm: 8px;
+            --border-radius-md: 16px;
+            --transition-fast: 0.3s ease-out;
+            --transition-slow: 0.6s ease-out;
+            --container-width: 1120px;
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-page);
+            color: var(--text-muted);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-heading);
+            color: var(--text-strong);
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        h1 { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; }
+        h2 { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.2; text-align: center; margin-bottom: var(--space-md); }
+        h3 { font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: var(--space-md); color: var(--text-strong); }
+        p { max-width: 75ch; margin-bottom: var(--space-md); font-size: clamp(1rem, 1.5vw, 1.1rem); }
+        p.p-final { margin-bottom: 0; }
+        
+        .container { width: 100%; max-width: var(--container-width); margin: 0 auto; padding: 0 var(--space-md); }
+        section { padding: var(--space-xl) 0; overflow: hidden; position: relative; }
+
+        .site-header {
+            position: fixed; top: 0; left: 0; width: 100%;
+            z-index: 1000;
+            padding: var(--space-sm) 0;
+            transition: background-color 0.4s ease-out, border-bottom 0.4s ease-out, box-shadow 0.4s ease-out;
+        }
+        
+        .site-header.is-sticky {
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--stroke);
+            box-shadow: var(--shadow-md);
+        }
+
+        .site-header .container { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        .logo img { height: 30px; }
+
+        .btn-header {
+            padding: 0.6rem 1.4rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            border-radius: 50px;
+            text-decoration: none;
+            color: white;
+            background: linear-gradient(90deg, var(--brand-primary), var(--brand-accent));
+            background-size: 200% auto;
+            border: none;
+            transition: all var(--transition-fast);
+        }
+        .btn-header:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 0, 243, 0.5);
+            background-position: right center;
+        }
+        
+        #case-hero {
+            padding-top: 120px;
+            padding-bottom: var(--space-lg);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background-color: var(--bg-hero);
+            background-image: 
+                radial-gradient(circle at 100% 0%, rgba(255, 0, 243, 0.1), transparent 40%),
+                radial-gradient(circle at 0% 100%, rgba(0, 192, 255, 0.1), transparent 40%),
+                repeating-linear-gradient(rgba(240, 238, 252, 0.5) 0, rgba(240, 238, 252, 0.5) 1px, transparent 1px, transparent 50px),
+                repeating-linear-gradient(to right, rgba(240, 238, 252, 0.5) 0, rgba(240, 238, 252, 0.5) 1px, transparent 1px, transparent 50px);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-lg);
+            align-items: center;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            background-color: var(--bg-page);
+            border: 1px solid var(--stroke);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: var(--space-md);
+        }
+        .hero-badge .material-symbols-outlined {
+            color: var(--brand-primary);
+            font-size: 1.2rem;
+        }
+
+        #case-hero h1 {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            line-height: 1.2;
+            text-transform: uppercase;
+            margin-bottom: var(--space-md);
+            font-weight: 700;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, var(--brand-accent), var(--brand-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+        
+        #case-hero p { 
+            font-size: clamp(1rem, 1.5vw, 1.1rem); 
+            max-width: 45ch;
+            color: var(--text-muted);
+            margin-bottom: 0;
+        }
+
+        .hero-image-composition {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-image-container {
+            width: 100%;
+            height: 380px;
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-image-composition .main-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 30%;
+        }
+
+        .big-numbers-stack {
+            position: absolute;
+            left: -40px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+        }
+        .big-number-card {
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.9);
+            border-radius: var(--border-radius-sm);
+            box-shadow: var(--shadow-md);
+            padding: var(--space-sm);
+            width: 180px;
+        }
+
+        .big-number-card .number {
+            font-family: var(--font-heading);
+            font-size: clamp(1.8rem, 3vw, 2.2rem);
+            font-weight: 700;
+            display: block;
+            line-height: 1;
+            background: linear-gradient(90deg, var(--brand-accent), var(--brand-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+        }
+        .big-number-card .label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .section-intro { text-align: center; margin-bottom: var(--space-lg); max-width: 850px; margin-left: auto; margin-right: auto; }
+        .section-intro p { margin-bottom: 0; }
+
+        .content-card {
+            background-color: var(--bg-page);
+            border-radius: var(--border-radius-md);
+            padding: var(--space-lg);
+            border: 1px solid var(--stroke);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .summary-card {
+            border-left: 4px solid var(--brand-primary);
+            border-image: linear-gradient(to bottom, var(--brand-primary), var(--brand-accent)) 1;
+        }
+        
+        .highlight-text {
+            background: linear-gradient(100deg, rgba(0, 192, 255, 0.1), rgba(255, 0, 243, 0.1));
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        #case-details > .container > .content-card:not(:last-child) {
+             margin-bottom: var(--space-xl);
+        }
+
+        .icon-heading { display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-md); }
+        .icon-heading .material-symbols-outlined {
+            font-size: 2.5rem;
+            color: var(--brand-accent);
+            background: linear-gradient(135deg, var(--brand-accent), var(--brand-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .icon-heading h3 { color: var(--text-strong); }
+
+        .challenges-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+        }
+        .challenge-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-sm);
+            padding: var(--space-md);
+            background-color: var(--bg-soft);
+            border-radius: var(--border-radius-sm);
+        }
+        .challenge-item .material-symbols-outlined { color: var(--brand-primary); font-size: 1.8rem; margin-top: 4px; }
+        .challenge-item p { margin: 0; font-size: 1rem; }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: var(--space-lg) auto 0 auto;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 2px; /* Linha mais fina */
+            background: linear-gradient(180deg, var(--brand-primary), var(--brand-accent));
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px; /* Ajuste para centralizar a linha de 2px */
+            border-radius: 2px;
+        }
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        .timeline-item.left { left: 0; }
+        .timeline-item.right { left: 50%; }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -13px;
+            background-color: white;
+            border: 4px solid var(--brand-primary);
+            top: 25px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .timeline-item.right::after { left: -12px; }
+        .timeline-content {
+            padding: var(--space-md);
+            background-color: var(--bg-page);
+            position: relative;
+            border-radius: var(--border-radius-sm);
+            border: 1px solid var(--stroke);
+            box-shadow: var(--shadow-md);
+        }
+        .timeline-content h4 { font-size: 1.1rem; color: var(--text-strong); font-family: var(--font-body); text-transform: uppercase; font-weight: 700; margin-bottom: var(--space-xs);}
+        .timeline-content p { font-size: 0.95rem; line-height: 1.6; margin-bottom: 0; }
+
+        .timeline-image-container {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 300px; /* Tamanho padronizado */
+            height: 200px; /* Tamanho padronizado */
+            z-index: 0;
+            display: none; /* Escondido em telas menores por padrão */
+            overflow: hidden; /* Para garantir que a imagem não vaze */
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .timeline-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ajusta a imagem para cobrir o container sem distorcer */
+            display: block;
+        }
+
+        .timeline-image-container::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to bottom right, rgba(0, 192, 255, 0.2), rgba(255, 0, 243, 0.2)); /* Degradê sobre a imagem */
+            z-index: 1;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+        }
+        .feature-card {
+            background-color: var(--bg-soft);
+            padding: var(--space-md);
+            border-radius: var(--border-radius-sm);
+            text-align: center;
+            border: 1px solid transparent;
+            transition: var(--transition-fast);
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--brand-primary);
+            box-shadow: var(--shadow-lg);
+        }
+        .feature-card .material-symbols-outlined {
+            font-size: 3rem;
+            margin-bottom: var(--space-sm);
+            color: var(--brand-accent);
+        }
+        .feature-card h4 { font-size: 1rem; text-transform: uppercase; margin-bottom: var(--space-xs); color: var(--text-strong); }
+        .feature-card p { font-size: 0.9rem; line-height: 1.6; margin-bottom: 0; }
+        
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: var(--space-md);
+            font-size: 1.1rem;
+            box-shadow: var(--shadow-lg);
+            border-radius: var(--border-radius-sm);
+            overflow: hidden;
+        }
+        .results-table th, .results-table td {
+            padding: var(--space-md);
+            text-align: left;
+        }
+        .results-table thead tr {
+            background: linear-gradient(135deg, var(--brand-primary), var(--brand-accent));
+            color: white;
+            text-transform: uppercase;
+            font-family: var(--font-heading);
+            font-size: 1rem;
+        }
+        .results-table tbody tr {
+            border-bottom: 1px solid var(--stroke);
+        }
+        .results-table tbody tr:nth-of-type(even) {
+            background-color: var(--bg-soft);
+        }
+        .results-table tbody tr:last-of-type {
+            border-bottom: 2px solid var(--brand-primary);
+        }
+        .results-table td:nth-child(4) { font-weight: 700; color: var(--brand-primary); }
+
+        .qualitative-impacts ul {
+            list-style: none; padding: 0;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-md);
+            margin-top: var(--space-md);
+        }
+        .qualitative-impacts li {
+            background: var(--bg-soft);
+            padding: var(--space-md);
+            border-radius: var(--border-radius-sm);
+            display: flex; align-items: center; gap: var(--space-sm);
+            font-weight: 500;
+        }
+        .qualitative-impacts .material-symbols-outlined { color: var(--brand-accent); font-size: 1.8rem; }
+        
+        .sub-heading {
+            font-family: var(--font-body);
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-top: var(--space-lg);
+            margin-bottom: var(--space-md);
+            border-bottom: 2px solid var(--stroke);
+            padding-bottom: var(--space-xs);
+            display: inline-block;
+        }
+
+        .video-player-mock {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            border-radius: var(--border-radius-md);
+            overflow: hidden;
+            cursor: pointer;
+            background-size: cover;
+            background-position: center;
+            box-shadow: var(--shadow-lg);
+            filter: grayscale(100%); /* Adicionado P&B */
+        }
+        .video-player-mock::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to bottom right, rgba(0, 192, 255, 0.2), rgba(255, 0, 243, 0.2)); /* Degradê colorido */
+            transition: background-color var(--transition-fast);
+        }
+        .video-player-mock:hover::before {
+            background: rgba(0,0,0,0.1);
+        }
+        .video-player-mock .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform var(--transition-fast), background-color var(--transition-fast);
+            backdrop-filter: blur(5px);
+        }
+         .video-player-mock .play-button::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 0;
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+            border-left: 25px solid var(--text-strong);
+            margin-left: 5px;
+        }
+        .video-player-mock:hover .play-button {
+            transform: translate(-50%, -50%) scale(1.1);
+            background-color: rgba(255, 255, 255, 1);
+        }
+
+        .testimonial-wrapper {
+            background-color: var(--bg-hero);
+            background-image: 
+                radial-gradient(circle at 100% 0%, rgba(255, 0, 243, 0.1), transparent 40%),
+                radial-gradient(circle at 0% 100%, rgba(0, 192, 255, 0.1), transparent 40%),
+                repeating-linear-gradient(rgba(240, 238, 252, 0.5) 0, rgba(240, 238, 252, 0.5) 1px, transparent 1px, transparent 50px),
+                repeating-linear-gradient(to right, rgba(240, 238, 252, 0.5) 0, rgba(240, 238, 252, 0.5) 1px, transparent 1px, transparent 50px);
+            padding: var(--space-xl) 0; /* Aumenta o espaço vertical */
+        }
+        #testimonial-section {
+            padding: 0; /* Remove o padding interno para o wrapper controlar o espaço */
+        }
+
+        .testimonial-card-large {
+            background-color: var(--bg-page);
+            border-radius: var(--border-radius-md);
+            padding: var(--space-md) var(--space-lg); /* Padding vertical reduzido */
+            border: 1px solid var(--stroke);
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .testimonial-card-large .quote-icon {
+            font-size: 5rem;
+            color: var(--brand-primary);
+            opacity: 0.1;
+            position: absolute;
+            top: var(--space-md);
+            left: var(--space-md);
+            line-height: 1;
+        }
+        .testimonial-card-large .quote-text {
+            font-size: clamp(1.2rem, 2vw, 1.5rem); /* Fonte um pouco menor */
+            font-style: normal;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.6;
+            margin: var(--space-sm) 0; /* Margem vertical reduzida */
+            color: var(--text-strong);
+            position: relative;
+            z-index: 2;
+        }
+        .testimonial-card-large .author-details {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-top: var(--space-md); /* Margem superior reduzida */
+        }
+        .testimonial-card-large .author-photo {
+            width: 80px; height: 80px;
+            border-radius: 50%; object-fit: cover;
+            border: 3px solid var(--brand-primary);
+        }
+        .testimonial-card-large .author-info .name {
+            font-weight: 700; color: var(--text-strong);
+            font-size: 1.1rem; text-transform: uppercase;
+        }
+        .testimonial-card-large .author-info .title {
+            font-size: 0.9rem; color: var(--text-muted);
+            text-transform: none;
+        }
+        
+        #press-section { background-color: var(--bg-soft); }
+        .press-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-md); }
+        .press-thumb {
+            display: block; position: relative; background-color: #ccc;
+            background-size: cover; background-position: center;
+            height: 300px; border-radius: var(--border-radius-md); overflow: hidden;
+            text-decoration: none; color: #ffffff; transition: all var(--transition-fast);
+            box-shadow: var(--shadow-md);
+            filter: grayscale(100%);
+        }
+        .press-thumb:hover { transform: scale(1.03) translateY(-5px); box-shadow: var(--shadow-lg); filter: grayscale(0%); }
+        .press-thumb::before {
+            content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 80%;
+            background: linear-gradient(to top, rgba(80, 0, 76, 0.8), rgba(0, 48, 64, 0.7), transparent 70%);
+            transition: var(--transition-fast);
+        }
+        .press-thumb:hover::before { background: linear-gradient(to top, rgba(80, 0, 76, 0.9), rgba(0, 48, 64, 0.8), transparent 70%); }
+        .press-thumb-content { position: absolute; bottom: 0; left: 0; right: 0; padding: var(--space-md); }
+        .press-thumb-content h4 { font-family: var(--font-body); font-weight: 700; color: #ffffff; font-size: 1.1rem; text-transform: none; line-height: 1.4; }
+        
+        .cta-banner { background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-accent) 100%); color: #ffffff; text-align: center; border-radius: var(--border-radius-md); margin: 0 var(--space-md) var(--space-xl) var(--space-md); padding: var(--space-lg); }
+        .cta-banner h2, .cta-banner p { color: #ffffff; }
+        .cta-banner p { max-width: 700px; margin: 0 auto var(--space-lg) auto; }
+        .btn-light { display: inline-block; padding: 1rem 2.5rem; font-family: var(--font-heading); font-weight: 700; font-size: clamp(0.9rem, 1.2vw, 1rem); border-radius: 50px; border: 2px solid transparent; cursor: pointer; transition: all var(--transition-fast); text-align: center; text-transform: uppercase; text-decoration: none; background-color: var(--bg-page); color: var(--text-strong); }
+        .btn-light:hover { background-color: transparent; color: var(--bg-page); border-color: var(--bg-page); transform: scale(1.05); }
+        
+        .site-footer { background-color: var(--bg-dark); color: #a0a0a0; padding: var(--space-lg) 0; font-size: 0.9rem; }
+        .footer-content { display: flex; flex-direction: column; align-items: center; text-align: center; gap: var(--space-lg); }
+        .footer-logo-copy p { margin-top: var(--space-sm); margin-bottom: 0; }
+        .footer-nav ul { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-sm); margin: 0; padding: 0;}
+        .footer-nav a { color: var(--text-light); text-decoration: none; transition: color var(--transition-fast); }
+        .footer-nav a:hover { color: var(--brand-primary); }
+        
+        .animate-on-scroll { opacity: 0; transition: opacity var(--transition-slow), transform var(--transition-slow); transform: translateY(30px); }
+        .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+        
+        @media (min-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 4fr 5fr;
+            }
+            .timeline-image-container {
+                display: block; /* Mostra as imagens em telas maiores */
+            }
+            .timeline-item.left .timeline-image-container {
+                left: 115%; 
+            }
+            .timeline-item.right .timeline-image-container {
+                right: 115%;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .footer-content { flex-direction: row; justify-content: space-between; align-items: center; text-align: left; }
+        }
+        @media (max-width: 991px) {
+             .hero-text { text-align: left; }
+             .hero-image-composition { margin-top: var(--space-lg); }
+             .big-numbers-stack { left: -20px; }
+             .big-number-card { width: 160px; padding: var(--space-xs);}
+             .big-number-card .number { font-size: 1.5rem; }
+        }
+
+        @media (max-width: 767px) {
+            #case-hero { text-align: center; min-height: auto; padding-top: 100px; }
+            .timeline::after { left: 12px; }
+            .timeline-item { width: 100%; padding-left: 50px; padding-right: 15px; }
+            .timeline-item.left, .timeline-item.right { left: 0; }
+            .timeline-item::after, .timeline-item.right::after { left: 0; }
+        }
+
+        /* Estilos do Botão Customizado do Chat */
+        #custom-chat-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--brand-primary), var(--brand-accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            box-shadow: var(--shadow-lg);
+            cursor: pointer;
+            z-index: 1000;
+            transition: transform var(--transition-fast);
+            
+            /* Animação 'balançando' (pulse) */
+            animation: pulse-animation 2s infinite;
+        }
+
+        #custom-chat-button:hover {
+            transform: scale(1.1);
+            animation-play-state: paused; /* Pausa a animação no hover */
+        }
+
+        #custom-chat-button .material-symbols-outlined {
+            font-size: 30px;
+        }
+        
+        /* Keyframes para a animação 'balançando' (pulse) */
+        @keyframes pulse-animation {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 0, 243, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(255, 0, 243, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 0, 243, 0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <a href="#" class="logo"><img src="https://storage.googleapis.com/etp-bucket/Logos%20Xertica.ai%20(.png)/xertica.ai/Copy%20of%20Logo_XERTICA_Black.png" alt="Logo Xertica.ai" onerror="this.onerror=null; this.src='https://placehold.co/120x30/1E1E1E/FFFFFF?text=Xertica.ai';"></a>
+            <a href="https://wa.me/551150396912" target="_blank" class="btn-header">Agendar Demo</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="case-hero">
+            <div class="container">
+                <div class="hero-grid">
+                    <div class="hero-text animate-on-scroll">
+                        <div class="hero-badge">
+                            <span class="material-symbols-outlined">verified</span>
+                            Case de Sucesso: MPRS & Xertica.ai
+                        </div>
+                        <h1>
+                           IA encurta o tempo de análise e devolve <span class="gradient-text">eficiência</span> ao MPRS
+                        </h1>
+                        <p>Com o apoio da IA, o Ministério Público do Rio Grande do Sul automatizou a transcrição e análise de audiências, devolvendo mais de 10 mil horas de trabalho.</p>
+                    </div>
+                    <div class="hero-image-composition animate-on-scroll" style="transition-delay: 0.2s;">
+                        <div class="big-numbers-stack">
+                            <div class="big-number-card">
+                                <span class="number">+10mil</span>
+                                <span class="label">Horas poupadas</span>
+                            </div>
+                             <div class="big-number-card">
+                                <span class="number">>95%</span>
+                                <span class="label">Acurácia da IA</span>
+                            </div>
+                        </div>
+                        <div class="hero-image-container">
+                             <img src="https://www.mprs.mp.br/media/areas/imprensa/midias_noticias/bvvyrfuktgdc.jpg" alt="Apresentação do Projeto Aurora no MPRS" class="main-image" onerror="this.onerror=null; this.src='https://placehold.co/600x400/CCCCCC/FFFFFF?text=Evento+MPRS';">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="case-details">
+            <div class="container">
+                
+                <div class="content-card summary-card animate-on-scroll">
+                    <div class="icon-heading">
+                        <span class="material-symbols-outlined">summarize</span>
+                        <h3>Resumo executivo</h3>
+                    </div>
+                    <p>O Ministério Público do Rio Grande do Sul (MPRS) enfrentava um <strong class="highlight-text">desafio crescente</strong>: o volume de audiências e depoimentos tornava o processo de análise de provas <strong class="highlight-text">moroso e sujeito a gargalos</strong>. A transcrição manual de uma hora de audiência podia levar até <strong class="highlight-text">seis horas de trabalho</strong>.</p>
+                    <p>Para mudar esse cenário, o MPRS implementou uma solução de <strong class="highlight-text">Inteligência Artificial</strong> desenvolvida pela Xertica.ai, que automatiza a transcrição, diarização e análise multimodal dos vídeos — com <strong class="highlight-text">acurácia superior a 95%</strong>.</p>
+                    <p class="p-final">Em menos de seis meses, a instituição poupou mais de <strong class="highlight-text">10 mil horas de trabalho humano</strong>, liberando promotores e equipes para atividades de maior valor estratégico.</p>
+                </div>
+
+                <div class="content-card summary-card animate-on-scroll">
+                    <div class="icon-heading">
+                        <span class="material-symbols-outlined">report_problem</span>
+                        <h3>Contexto e desafios iniciais</h3>
+                    </div>
+                    <p>O MPRS é responsável por defender direitos sociais e coletivos, atuando em áreas como saúde, educação e meio ambiente. Diante da complexidade dos casos e do alto volume de audiências, o órgão precisava lidar com <strong class="highlight-text">processos manuais lentos e repetitivos</strong>, como:</p>
+                    <div class="challenges-grid">
+                        <div class="challenge-item">
+                            <span class="material-symbols-outlined">history_toggle_off</span>
+                            <p>Transcrição e análise de depoimentos em vídeo;</p>
+                        </div>
+                        <div class="challenge-item">
+                            <span class="material-symbols-outlined">person_search</span>
+                            <p>Pesquisa de endereços para intimações;</p>
+                        </div>
+                         <div class="challenge-item">
+                            <span class="material-symbols-outlined">gavel</span>
+                            <p>Busca por jurisprudências em múltiplas bases;</p>
+                        </div>
+                         <div class="challenge-item">
+                            <span class="material-symbols-outlined">edit_document</span>
+                            <p>Elaboração manual de minutas e pareceres.</p>
+                        </div>
+                    </div>
+                    <p style="margin-top: var(--space-md);">Essas atividades consumiam tempo, aumentavam o backlog e atrasavam decisões judiciais. Um exemplo emblemático: um caso de fraude na aquisição de medicamentos levou <strong class="highlight-text">sete anos até o julgamento</strong>, em parte pela dificuldade de processar e revisar os depoimentos gravados.</p>
+                    <p class="p-final">A aspiração era clara: <strong class="highlight-text">modernizar a gestão processual</strong> com tecnologia segura e escalável, capaz de acelerar o trabalho sem comprometer a integridade jurídica.</p>
+                </div>
+
+                <div class="content-card summary-card animate-on-scroll">
+                    <div class="icon-heading">
+                         <span class="material-symbols-outlined">route</span>
+                        <h3>A jornada da solução</h3>
+                    </div>
+                    <p>O projeto nasceu a partir de um <strong class="highlight-text">chamamento público</strong>, no qual a Xertica.ai foi selecionada entre cinco proponentes para desenvolver soluções de IA voltadas ao ambiente jurídico.</p>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item left">
+                            <div class="timeline-content">
+                                <h4>1. Diagnóstico inicial</h4>
+                                <p>O levantamento técnico identificou que a maior dor estava na <strong class="highlight-text">degravação e análise de vídeos</strong> de audiências, onde o tempo de transcrição era o principal gargalo.</p>
+                            </div>
+                            <div class="timeline-image-container">
+                                <img src="https://i.imgur.com/dcutprb.jpeg" alt="Homem analisando gráfico em um tablet">
+                            </div>
+                        </div>
+                        <div class="timeline-item right">
+                            <div class="timeline-content">
+                                <h4>2. Definição da estratégia</h4>
+                                <p>O MPRS optou por iniciar com um <strong class="highlight-text">módulo de transcrição inteligente</strong>, capaz de reconhecer falas, gerar resumos e classificar emoções.</p>
+                            </div>
+                            <div class="timeline-image-container">
+                                <img src="https://i.imgur.com/5Ls5J7g.jpeg" alt="Mulher utilizando notebook com interface de IA">
+                            </div>
+                        </div>
+                        <div class="timeline-item left">
+                            <div class="timeline-content">
+                                <h4>3. Execução</h4>
+                                <p>A implantação ocorreu de <strong class="highlight-text">forma modular, com pilotos</strong> supervisionados por promotores e equipes de TI. O modelo de IA foi calibrado para atingir <strong class="highlight-text">acurácia superior a 95%</strong>.</p>
+                            </div>
+                             <div class="timeline-image-container">
+                                <img src="https://i.imgur.com/DfYgWTD.jpeg" alt="Reunião de equipe com diagrama de processos">
+                            </div>
+                        </div>
+                         <div class="timeline-item right">
+                            <div class="timeline-content">
+                                <h4>4. Mudança organizacional</h4>
+                                <p>Os servidores receberam <strong class="highlight-text">treinamento</strong> e passaram a acessar o sistema via intranet e Active Directory, garantindo <strong class="highlight-text">autenticação segura</strong>.</p>
+                            </div>
+                            <div class="timeline-image-container">
+                                <img src="https://i.imgur.com/AsCKLm8.jpeg" alt="Mulher em treinamento com óculos de realidade virtual">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="content-card summary-card animate-on-scroll">
+                    <div class="icon-heading">
+                        <span class="material-symbols-outlined"></span>
+                        <h3>CONHEÇA AURORA: O ECOSSISTEMA DE IA QUE REVOLUCIONA O MPRS</h3>
+                    </div>
+                    
+                    <div class="video-player-mock" style="background-image: url('https://img.youtube.com/vi/ywIFlyXUTKU/maxresdefault.jpg'); margin: var(--space-lg) auto;">
+                        <div class="play-button"></div>
+                    </div>
+
+                    <h4 class="sub-heading" style="margin-top: var(--space-lg);">Principais Funcionalidades da Aurora:</h4>
+                    <div class="features-grid" style="margin-top: var(--space-md);">
+                        <div class="feature-card">
+                            <span class="material-symbols-outlined">summarize</span>
+                            <h4>Análise e Resumo Automático</h4>
+                            <p>Analiso e resumo processos automaticamente, <strong class="highlight-text">sugiro encaminhamentos</strong> e redijo minutas.</p>
+                        </div>
+                        <div class="feature-card">
+                            <span class="material-symbols-outlined">chat</span>
+                            <h4>Agente Conversacional</h4>
+                            <p>Respondo suas dúvidas com <strong class="highlight-text">linguagem natural</strong>, sugirindo perguntas e oferecendo encaminhamentos.</p>
+                        </div>
+                        <div class="feature-card">
+                            <span class="material-symbols-outlined">text_fields</span>
+                            <h4>Redação Inteligente</h4>
+                            <p>Ajudo a escrever <strong class="highlight-text">peças importantes do processo</strong>, mantendo o estilo de escrita do responsável.</p>
+                        </div>
+                        <div class="feature-card">
+                            <span class="material-symbols-outlined">database</span>
+                            <h4>Coleta e Organização de Dados</h4>
+                            <p>Coleto dados relevantes (audiências, decisões, bens apreendidos) e aplico <strong class="highlight-text">rótulos inteligentes</strong>.</p>
+                        </div>
+                        <div class="feature-card">
+                            <span class="material-symbols-outlined">search</span>
+                            <h4>Pesquisa Jurisprudencial Ágil</h4>
+                            <p>Faço <strong class="highlight-text">pesquisa jurisprudencial</strong> em diversos tribunais de forma ágil e confiável.</p>
+                        </div>
+                        <div class="feature-card">
+                            <span class="material-symbols-outlined">videocam</span>
+                            <h4>Transcrição e Análise de Vídeos</h4>
+                            <p>Transcrevo e resumo vídeos, extraio <strong class="highlight-text">informações estratégicas</strong> e facilito o acesso ao conteúdo.</p>
+                        </div>
+                    </div>
+                    <p style="margin-top: var(--space-lg); text-align: center; font-style: italic;">"Eu não tomo decisões, elas continuam sendo sempre dos responsáveis pelo processo. Estou aqui para <strong class="highlight-text">apoiar com inteligência, agilidade e humanidade</strong> e seguirei evoluindo para trazer sempre novas funções." - Aurora</p>
+                </div>
+
+                 <div class="content-card summary-card animate-on-scroll">
+                    <div class="icon-heading">
+                        <span class="material-symbols-outlined">query_stats</span>
+                        <h3>Resultados mensuráveis e qualitativos</h3>
+                    </div>
+                    <table class="results-table">
+                        <thead>
+                            <tr>
+                                <th>Indicador</th>
+                                <th>Antes da IA</th>
+                                <th>Depois da IA</th>
+                                <th>Impacto</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                             <tr>
+                                <td>Horas de trabalho poupadas</td>
+                                <td>-</td>
+                                <td>+10.000 horas</td>
+                                <td>Eficiência operacional</td>
+                            </tr>
+                             <tr>
+                                <td>Vídeos transcritos</td>
+                                <td>-</td>
+                                <td>17.871 vídeos</td>
+                                <td>Escala comprovada</td>
+                            </tr>
+                            <tr>
+                                <td>Acurácia média</td>
+                                <td>-</td>
+                                <td>>95%</td>
+                                <td>Confiabilidade jurídica</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h4 style="text-align: center; margin: var(--space-lg) 0 var(--space-md) 0; font-size: 1.2rem;">Impactos qualitativos:</h4>
+                    <div class="qualitative-impacts">
+                        <ul>
+                            <li><span class="material-symbols-outlined">groups</span><p>Redução da <strong class="highlight-text">sobrecarga</strong> de servidores e promotores;</p></li>
+                            <li><span class="material-symbols-outlined">rocket_launch</span><p><strong class="highlight-text">Agilidade</strong> no julgamento de casos;</p></li>
+                            <li><span class="material-symbols-outlined">visibility</span><p>Maior <strong class="highlight-text">transparência</strong> e acesso à informação;</p></li>
+                            <li><span class="material-symbols-outlined">mood</span><p><strong class="highlight-text">Satisfação interna</strong> com ferramentas mais intuitivas.</p></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                 <div class="content-card animate-on-scroll" style="background: linear-gradient(135deg, var(--brand-primary), var(--brand-accent)); color: white;">
+                    <div class="icon-heading">
+                        <span class="material-symbols-outlined" style="color: white; background: none; -webkit-text-fill-color: white;">flag</span>
+                        <h3 style="color: white;">Conclusão: por que isso importa</h3>
+                    </div>
+                    <p class="p-final" style="color: white; font-size: 1.2rem;">O caso do MPRS mostra que a Inteligência Artificial pode ser aplicada com <strong class="highlight-text" style="background: rgba(255,255,255,0.1);">segurança e propósito na Justiça</strong>, acelerando processos e devolvendo eficiência à gestão pública. Com a parceria da Xertica.ai, o Ministério Público do RS inaugurou um <strong class="highlight-text" style="background: rgba(255,255,255,0.1);">novo paradigma</strong>: menos tempo em tarefas operacionais e mais tempo em decisões que geram impacto social.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="testimonial-wrapper">
+            <section id="testimonial-section" class="animate-on-scroll">
+                <div class="container">
+                    <div class="testimonial-card-large summary-card">
+                        <span class="material-symbols-outlined quote-icon">format_quote</span>
+                        <p class="quote-text">A <strong class="highlight-text">adoção da IA</strong> no Ministério Público vai consolidar ainda mais a <strong class="highlight-text">qualidade de nossa atuação</strong>. Ganha toda sociedade gaúcha que terá um <strong class="highlight-text">MP mais ágil e mais preparado</strong> para atender as demandas da comunidade.</p>
+                        <div class="author-details">
+                            <img src="https://www.amprs.org.br/arquivos/comunicacao_noticia/zoom_1618489800.jpg" alt="Foto de Alexandre Saltz" class="author-photo"  onerror="this.onerror=null; this.src='https://placehold.co/80x80/CCCCCC/FFFFFF?text=AS';">
+                            <div class="author-info">
+                                <div class="name">ALEXANDRE SALTZ</div>
+                                <div class="title">PROCURADOR-GERAL DE JUSTIÇA DO MPRS</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <section id="press-section" class="animate-on-scroll">
+            <div class="container">
+                <div class="section-intro">
+                    <h2>O SUCESSO TAMBÉM NA IMPRENSA</h2>
+                    <p>A inovação e os resultados alcançados com o projeto Aurora ganharam destaque na mídia, reforçando o pioneirismo do MPRS na adoção de tecnologias para aprimorar a justiça.</p>
+                </div>
+                <div class="press-grid">
+                    <a href="https://gauchazh.clicrbs.com.br/opiniao/noticia/2024/09/aurora-e-o-ecossistema-de-ferramentas-que-revoluciona-o-mprs-clz0u5w1n004i0152w97b2eub.html" target="_blank" class="press-thumb" style="background-image: url('https://www.mprs.mp.br/media/areas/imprensa/midias_noticias/aurora0409_08.jpeg');">
+                        <div class="press-thumb-content"><h4>Aurora e o ecossistema de ferramentas que revoluciona o MPRS</h4></div>
+                    </a>
+                    <a href="https://www.mprs.mp.br/noticias/63864/" target="_blank" class="press-thumb" style="background-image: url('https://www.mprs.mp.br/media/areas/imprensa/midias_noticias/aurora0409_01.jpeg');">
+                         <div class="press-thumb-content"><h4>Ministério Público lança o Aurora, ecossistema de Inteligência Artificial para acelerar a análise de processos</h4></div>
+                    </a>
+                    <a href="https://tiinside.com.br/04/09/2024/ia-acelera-em-90-a-analise-de-videos-e-revoluciona-atuacao-do-ministerio-publico-no-rs/" target="_blank" class="press-thumb" style="background-image: url('https://www.estado.rs.gov.br/upload/recortes/202306/06172400_2077294_GDO.jpg');">
+                         <div class="press-thumb-content"><h4>IA acelera em 90% a análise de vídeos e revoluciona atuação do Ministério Público no RS</h4></div>
+                    </a>
+                    <a href="https://www.jornaldocomercio.com/colunas/mercado-digital/2024/09/1211074-ia-acelera-em-90-analise-de-videos-mprs-e-acelera-processos.html" target="_blank" class="press-thumb" style="background-image: url('https://www.jornaldocomercio.com/_midias/jpg/2023/06/06/atf_060623_posse_procurador_geral___3_-10233126.jpg');">
+                         <div class="press-thumb-content"><h4>IA acelera em 90% análise de vídeos MPRS e acelera processos</h4></div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+             <div class="cta-banner animate-on-scroll">
+                <h2>LEVE ESSA REVOLUÇÃO PARA A SUA INSTITUIÇÃO</h2>
+                <p>Descubra como a Xertica.ai pode desenhar uma solução de IA personalizada para os desafios do seu órgão público. Agende uma demonstração e veja o futuro da justiça em ação.</p>
+                <a href="https://wa.me/551150396912" class="btn-light" target="_blank">AGENDAR DEMONSTRAÇÃO</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo-copy">
+                    <a href="#" class="logo">
+                        <img src="https://storage.googleapis.com/etp-bucket/Logos%20Xertica.ai%20(.png)/xertica.ai/Copy%20of%20Logo_XERTICA_white.png" alt="Logo Xertica.ai" style="height: 24px;" onerror="this.onerror=null; this.src='https://placehold.co/100x24/FFFFFF/1E1E1E?text=Xertica.ai';">
+                    </a>
+                    <p>© 2024 Xertica.ai. Todos os direitos reservados.</p>
+                </div>
+                <nav class="footer-nav">
+                    <ul>
+                        <li><a href="#">Termos de Uso</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botão customizado do Chat -->
+    <div id="custom-chat-button">
+        <span class="material-symbols-outlined">chat</span>
+    </div>
+
+    <!--Start of Tawk.to Script - SUBSTITUÍDO -->
+    <!-- O script do chat DEVE vir ANTES do script que o utiliza -->
+    <script
+    src='//fw-cdn.com/11289534/3984846.js'
+    chat='true'>
+    </script>
+    <!--End of Tawk.to Script-->
+
+    <!-- NOVO SCRIPT DE CONFIGURAÇÃO DO FRESHWORKS -->
+    <script>
+    // Esta função é chamada automaticamente pelo script 'fw-cdn.com' após o carregamento
+    function fw_chat_widget() {
+        console.log("fw_chat_widget() foi chamada.");
+        
+        // 1. Inicializa o widget e esconde o botão padrão
+        window.fcWidget.init({
+            widget_id: "3984846", // Garante que o ID está correto
+            launcher: {
+                display: "none" // Esconde o botão padrão, já que temos o nosso
+            }
+        });
+
+        console.log("Widget inicializado e botão padrão escondido.");
+
+        // 2. Define os dados do usuário (conforme seu snippet)
+        // Usamos um try/catch para segurança
+        try {
+            // To set unique user id in your system when it is available
+            window.fcWidget.setExternalId("john.doe1987");
+
+            // To set user name
+            window.fcWidget.user.setFirstName("John");
+
+            // To set user email
+            window.fcWidget.user.setEmail("john.doe@gmail.com");
+
+            // To set user properties
+            window.fcWidget.user.setProperties({
+              cf_plan: "Pro",                 // meta property 1
+              cf_status: "Active"             // meta property 2
+            });
+            console.log("Dados do usuário (John Doe) configurados no chat.");
+        } catch (e) {
+            console.warn("Erro ao definir dados do usuário no chat:", e);
+        }
+    }
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Animation Observer
+            const animatedElements = document.querySelectorAll('.animate-on-scroll');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) { 
+                        entry.target.classList.add('visible'); 
+                        observer.unobserve(entry.target); 
+                    }
+                });
+            }, { threshold: 0.1 });
+            animatedElements.forEach(el => observer.observe(el));
+
+            // Sticky Header
+            const header = document.querySelector('.site-header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('is-sticky');
+                } else {
+                    header.classList.remove('is-sticky');
+                }
+            });
+
+            // Custom Video Player
+            const videoMock = document.querySelector('.video-player-mock');
+            if (videoMock) {
+                videoMock.addEventListener('click', () => {
+                    videoMock.innerHTML = `<iframe src="https://www.youtube.com/embed/ywIFlyXUTKU?autoplay=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>`;
+                }, { once: true });
+            }
+
+            // --- Lógica do Botão de Chat Customizado ---
+            const customChatButton = document.getElementById('custom-chat-button');
+            if (customChatButton) {
+                customChatButton.addEventListener('click', () => {
+                    // Tenta chamar a API do Freshworks (fw-cdn)
+                    // A API correta, baseada no seu snippet, é 'window.fcWidget'
+                    if (typeof window.fcWidget === 'object' && typeof window.fcWidget.open === 'function') {
+                        window.fcWidget.open();
+                    } else {
+                        // Log de aviso caso a API não seja encontrada
+                        console.warn('API do chat (window.fcWidget) não encontrada. O script foi carregado?');
+                    }
+                });
+            }
+        });
+    </script>
+
+    <!--Start of Tawk.to Script - SUBSTITUÍDO - MOVIDO PARA CIMA -->
+    <!--End of Tawk.to Script-->
+</body>
+</html>
+
+
